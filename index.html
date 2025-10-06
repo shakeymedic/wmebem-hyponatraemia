@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyponatraemia in the ED: A Practical Guide for UK Clinicians</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .wmebem-logo {
+            height: 60px; /* Constrain height to fit in the header */
+            width: auto;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #3b82f6; /* blue-500 */
+            border-bottom-color: #3b82f6;
+        }
+        .flowchart {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #e5e7eb; /* gray-200 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        .alert {
+            border-left-width: 4px;
+            padding: 1rem;
+        }
+        .alert-danger {
+            border-color: #ef4444; /* red-500 */
+            background-color: #fef2f2; /* red-50 */
+        }
+        .alert-warning {
+            border-color: #f97316; /* orange-500 */
+            background-color: #fff7ed; /* orange-50 */
+        }
+        .alert-info {
+            border-color: #3b82f6; /* blue-500 */
+            background-color: #eff6ff; /* blue-50 */
+        }
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <img src="https://iili.io/KGQOvkl.md.png" alt="WMEBEM Logo" class="wmebem-logo">
+                    <h1 class="hidden sm:block ml-4 text-xl md:text-2xl font-bold text-gray-700">Hyponatraemia in the ED</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-20 z-40 overflow-x-auto">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center space-x-4 md:space-x-8 h-16 whitespace-nowrap">
+                <a href="#introduction" class="nav-link px-3 py-2 text-sm md:text-base font-medium text-gray-600">Introduction</a>
+                <a href="#assessment" class="nav-link px-3 py-2 text-sm md:text-base font-medium text-gray-600">Assessment</a>
+                <a href="#diagnosis" class="nav-link px-3 py-2 text-sm md:text-base font-medium text-gray-600">Diagnosis</a>
+                <a href="#management" class="nav-link px-3 py-2 text-sm md:text-base font-medium text-gray-600">Emergency Mgmt</a>
+                <a href="#aetiology" class="nav-link px-3 py-2 text-sm md:text-base font-medium text-gray-600">Aetiology Mgmt</a>
+                <a href="#ods" class="nav-link px-3 py-2 text-sm md:text-base font-medium text-gray-600">ODS</a>
+                <a href="#disposition" class="nav-link px-3 py-2 text-sm md:text-base font-medium text-gray-600">Disposition</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Introduction -->
+        <section id="introduction" class="space-y-6">
+            <h2 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-200 pb-2">1. Introduction & Clinical Imperative</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">1.1 The Scale of the Problem</h3>
+                <p class="mb-4">Hyponatraemia (serum sodium &lt;135 mmol/L) is the most common electrolyte disorder in clinical practice, affecting 15-30% of hospitalised patients. Its prevalence increases with age, making it a frequent finding in the ED.</p>
+                <p>It is an independent predictor of increased morbidity, mortality, and length of hospital stay across various conditions like heart failure, cirrhosis, and pneumonia. Even mild hyponatraemia (130-134 mmol/L) is associated with impaired cognition, falls, and poorer outcomes. Think of it not as a lab anomaly, but as a marker of significant physiological stress.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">1.2 Pathophysiological Principles</h3>
+                <p class="mb-4">Fundamentally, hyponatraemia is a disorder of <strong class="text-blue-600">water balance</strong>, not sodium deficiency. It's a state of relative excess of total body water compared to total body sodium content. This is almost always due to impaired water excretion, driven by the persistent secretion of Arginine Vasopressin (AVP), also known as Antidiuretic Hormone (ADH).</p>
+                <p class="mb-4">Normally, low plasma osmolality suppresses AVP, allowing the kidneys to excrete large volumes of dilute urine. In hyponatraemia, this mechanism fails. The primary danger is <strong class="text-red-600">neurological</strong>. Low extracellular tonicity drives water into brain cells, causing cerebral oedema. Encased in the rigid skull, the brain cannot swell, leading to raised intracranial pressure and symptoms ranging from headache to seizures, coma, and brainstem herniation.</p>
+                <div class="alert alert-warning mt-4">
+                    <p><strong class="font-semibold">Key Principle:</strong> The <strong class="font-semibold">rate of fall</strong> in sodium is more critical than the absolute number. A rapid drop is a neurological emergency, whereas a chronic, slow decline may be well-tolerated due to cerebral adaptation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assessment -->
+        <section id="assessment" class="space-y-6 mt-12">
+            <h2 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-200 pb-2">2. Classification & Initial Assessment</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">2.1 Classification of Hyponatraemia</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">By Severity (UK Guidelines)</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Mild:</strong> 130-135 mmol/L</li>
+                            <li><strong>Moderate:</strong> 125-129 mmol/L</li>
+                            <li><strong>Severe/Profound:</strong> &lt;125 mmol/L</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">By Chronicity</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Acute:</strong> Developed over &lt;48 hours. Risk = Cerebral Oedema.</li>
+                            <li><strong>Chronic:</strong> Present for &gt;48 hours (or unknown duration). Risk = Osmotic Demyelination with rapid correction.</li>
+                        </ul>
+                         <div class="alert alert-info mt-2">
+                             <p><strong>Assume CHRONIC if duration is unknown.</strong> This is the safest approach.</p>
+                         </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">By Plasma Tonicity</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Hypotonic (&lt;275 mOsm/kg):</strong> True hyponatraemia. Most common type.</li>
+                            <li><strong>Isotonic (275-295 mOsm/kg):</strong> Pseudohyponatraemia (e.g., hyperlipidaemia).</li>
+                            <li><strong>Hypertonic (&gt;295 mOsm/kg):</strong> Redistributive (e.g., hyperglycaemia).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">2.2 The Critical First Look: Symptoms Dictate Management</h3>
+                <div class="alert alert-danger">
+                    <p><strong class="font-semibold">Treat the patient, not the number!</strong> The immediate priority is identifying life-threatening neurological compromise.</p>
+                </div>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-red-700">Severe Symptoms (Neurological Emergency)</h4>
+                        <ul class="list-disc list-inside space-y-1 mt-2">
+                            <li>Seizures</li>
+                            <li>Reduced GCS (≤8)</li>
+                            <li>Persistent vomiting</li>
+                            <li>Cardiorespiratory arrest</li>
+                        </ul>
+                        <p class="mt-2 font-bold">Action: IMMEDIATE treatment with hypertonic saline.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-orange-700">Moderately Severe Symptoms</h4>
+                         <ul class="list-disc list-inside space-y-1 mt-2">
+                            <li>Confusion</li>
+                            <li>Headache</li>
+                            <li>Nausea (without vomiting)</li>
+                        </ul>
+                        <p class="mt-2 font-bold">Action: URGENT treatment with hypertonic saline.</p>
+                    </div>
+                </div>
+                 <div class="mt-4">
+                    <h4 class="text-lg font-semibold text-green-700">Mild or Absent Symptoms</h4>
+                    <p class="mt-2">Lethargy, anorexia, poor balance. These patients require systematic investigation, not emergency sodium correction.</p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">2.3 Structured Clinical Assessment</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold">History</h4>
+                        <ul class="list-disc list-inside mt-2 space-y-2">
+                            <li><strong>Symptom Onset:</strong> Acute vs. chronic.</li>
+                            <li><strong>Fluid Balance:</strong> Vomiting, diarrhoea, fluid intake (polydipsia?), recent surgery.</li>
+                            <li><strong>Medication Review:</strong> CRITICAL. Look for diuretics (especially thiazides), SSRIs, antiepileptics (carbamazepine), PPIs, NSAIDs.</li>
+                            <li><strong>PMH:</strong> Heart failure, liver cirrhosis, CKD, malignancy (especially lung), CNS disorders, Addison's, hypothyroidism.</li>
+                            <li><strong>Social/Dietary:</strong> "Tea and toast" diet, beer potomania, recreational drugs (MDMA).</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 class="text-lg font-semibold">Examination: Volume Status Assessment</h4>
+                        <p class="text-sm italic text-gray-500">Clinical assessment of volume status is notoriously unreliable. Use it to form a hypothesis, but confirm with labs (urine sodium).</p>
+                        <ul class="mt-2 space-y-2">
+                            <li><strong>Hypovolaemia:</strong> Tachycardia, postural hypotension, dry mucous membranes, low JVP.</li>
+                            <li><strong>Hypervolaemia:</strong> Raised JVP, peripheral oedema, ascites, pulmonary oedema (bibasal crackles).</li>
+                            <li><strong>Euvolaemia:</strong> Absence of the above signs. A diagnosis of exclusion.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Diagnosis -->
+        <section id="diagnosis" class="space-y-6 mt-12">
+            <h2 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-200 pb-2">3. A Stepwise Diagnostic Pathway</h2>
+             <div class="alert alert-danger">
+                <p><strong class="font-semibold">Time-Critical Action:</strong> Obtain <strong class="font-semibold">paired blood and urine samples BEFORE</strong> administering any significant volume of IV fluids. Post-treatment samples are uninterpretable.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">3.1 Essential Initial Investigations</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold">Blood Tests</h4>
+                        <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li>U&Es (for Na+, K+, renal function)</li>
+                            <li>Serum Osmolality</li>
+                            <li>Blood Glucose</li>
+                            <li>LFTs</li>
+                            <li>TFTs</li>
+                            <li>9 am Cortisol (if adrenal insufficiency suspected)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold">Urine Tests (Paired with Bloods)</h4>
+                         <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li>Urine Osmolality</li>
+                            <li>Urine Sodium Concentration</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+                    <h4 class="text-lg font-semibold mb-2">Correcting Sodium for Hyperglycaemia</h4>
+                    <p class="mb-2">In hyperglycaemia, measured sodium is falsely low. Use this calculator to estimate the corrected sodium.</p>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <div class="flex-grow">
+                            <label for="measuredNa" class="block text-sm font-medium">Measured Na+ (mmol/L)</label>
+                            <input type="number" id="measuredNa" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="flex-grow">
+                            <label for="glucose" class="block text-sm font-medium">Glucose (mmol/L)</label>
+                            <input type="number" id="glucose" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <button id="calculateNa" class="self-end bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Calculate</button>
+                    </div>
+                    <div id="correctedNaResult" class="mt-4 text-lg font-semibold text-center"></div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">3.2 Diagnostic Algorithm</h3>
+                <img src="https://www.researchgate.net/profile/Stephen-Ball-3/publication/262045265/figure/fig1/AS:669429582290947@1536615933610/Diagnostic-algorithm-for-hyponatraemia-reproduced-with-permission-from-Spasovski-et.png" alt="Diagnostic Algorithm for Hyponatraemia" class="flowchart">
+                <div class="mt-4 space-y-4">
+                    <p><strong class="text-lg">Step 1: Assess Serum Osmolality</strong> - Classify as hypotonic, isotonic, or hypertonic.</p>
+                    <p><strong class="text-lg">Step 2: Assess Urine Osmolality (in hypotonic hyponatraemia)</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>&lt;100 mOsm/kg:</strong> AVP is suppressed. Kidneys are working. Cause is excess free water intake (primary polydipsia, low solute intake).</li>
+                        <li><strong>&gt;100 mOsm/kg:</strong> AVP is active. This is pathological. Proceed to Step 3.</li>
+                    </ul>
+                     <p><strong class="text-lg">Step 3: Integrate Urine Sodium & Clinical Volume Status</strong></p>
+                     <p>Use a threshold of Urine Na+ <strong class="font-semibold">30 mmol/L</strong>. This step differentiates the causes of AVP-mediated hyponatraemia.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">3.3 Differential Diagnosis by Volume Status</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Volume Status</th>
+                                <th>Urine Sodium</th>
+                                <th>Key Causes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2"><strong>Hypovolaemic</strong></td>
+                                <td>&lt;30 mmol/L</td>
+                                <td><strong>Extra-Renal Loss:</strong> Diarrhoea, vomiting, burns, pancreatitis.</td>
+                            </tr>
+                            <tr>
+                                <td>&gt;30 mmol/L</td>
+                                <td><strong>Renal Loss:</strong> Diuretics (thiazides), Addison's, cerebral salt wasting.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Euvolaemic</strong></td>
+                                <td>&gt;30 mmol/L</td>
+                                <td><strong>SIAD</strong>, glucocorticoid deficiency, severe hypothyroidism.</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"><strong>Hypervolaemic</strong></td>
+                                <td>&lt;30 mmol/L</td>
+                                <td>Congestive heart failure, liver cirrhosis, nephrotic syndrome.</td>
+                            </tr>
+                             <tr>
+                                <td>&gt;30 mmol/L</td>
+                                <td>Acute or chronic kidney disease.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">Focus: Syndrome of Inappropriate Antidiuresis (SIAD)</h3>
+                <p>SIAD is the most common cause of euvolaemic hyponatraemia. It is a diagnosis of exclusion with the following criteria:</p>
+                <ul class="list-decimal list-inside mt-4 space-y-2">
+                    <li>Hypotonic hyponatraemia (Serum osmolality &lt;275 mOsm/kg).</li>
+                    <li>Inappropriately concentrated urine (Urine osmolality &gt;100 mOsm/kg).</li>
+                    <li>Clinical euvolaemia.</li>
+                    <li>Elevated urine sodium (&gt;30 mmol/L) on normal salt/water intake.</li>
+                    <li>Normal renal, adrenal, and thyroid function.</li>
+                </ul>
+                <p class="mt-4"><strong>Common causes of SIAD include:</strong> Malignancy (SCLC), pulmonary disease (pneumonia), CNS disorders (stroke, bleed), and numerous drugs (SSRIs, carbamazepine).</p>
+             </div>
+        </section>
+
+        <!-- Emergency Management -->
+        <section id="management" class="space-y-6 mt-12">
+            <h2 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-200 pb-2">4. Emergency Management of Symptomatic Hyponatraemia</h2>
+            <div class="alert alert-danger">
+                <p><strong class="font-semibold">This is for patients with severe or moderately severe neurological symptoms ONLY.</strong> The goal is to rapidly increase serum sodium by a small amount to reverse cerebral oedema, not to normalise the level.</p>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">4.1 The 2022 Society for Endocrinology Protocol</h3>
+                 <p class="mb-4">The recommended method is <strong class="text-blue-600">intermittent bolus therapy</strong> with 3% hypertonic saline, not a continuous infusion. Boluses are faster, more effective, and paradoxically safer, with a lower risk of over-correction.</p>
+                 <img src="https://www.endocrinology.org/media/4185/fig-1-management-of-severe-hyponatraemia.png" alt="Emergency Management Flowchart" class="flowchart">
+                 <div class="mt-6 space-y-4">
+                    <p><strong class="text-lg">1. Initial Bolus:</strong> Administer <strong class="font-semibold">150 mL of 3% hypertonic sodium chloride IV over 20 minutes</strong>.</p>
+                    <p><strong class="text-lg">2. Target:</strong> Aim for a <strong class="font-semibold">5 mmol/L rise</strong> in serum sodium in the first hour.</p>
+                    <p><strong class="text-lg">3. Repeat if Needed:</strong> If severe symptoms persist, repeat the 150mL bolus up to two more times. Check serum sodium within 60 minutes of the first bolus.</p>
+                    <div class="alert alert-warning mt-4">
+                        <h4 class="font-semibold">Stopping Criteria for Hypertonic Saline</h4>
+                        <p>Stop bolus therapy as soon as ANY of the following are met:</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>Neurological symptoms resolve.</li>
+                            <li>Target rise of 5-6 mmol/L is achieved.</li>
+                            <li>Total rise approaches the 24-hour limit of 10 mmol/L.</li>
+                            <li>Serum sodium reaches 130 mmol/L.</li>
+                        </ul>
+                    </div>
+                 </div>
+            </div>
+        </section>
+        
+        <!-- Aetiology Management -->
+        <section id="aetiology" class="space-y-6 mt-12">
+            <h2 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-200 pb-2">5. Management Strategies Based on Aetiology</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">5.1 Hypovolaemic Hyponatraemia</h3>
+                <p class="mb-2"><strong>Goal:</strong> Restore intravascular volume to switch off the AVP stimulus.</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>Treatment:</strong> Fluid resuscitation with IV isotonic crystalloids (e.g., 0.9% sodium chloride).</li>
+                    <li><strong>Rate:</strong> Based on severity. A 500mL-1L challenge over 2-4 hours is reasonable for significant dehydration.</li>
+                </ul>
+                <div class="alert alert-warning mt-4">
+                    <p><strong class="font-semibold">High Risk of Autocorrection:</strong> Once volume is restored, AVP switches off, leading to a massive water diuresis (aquaresis) and a dangerously rapid rise in sodium. Monitor serum sodium frequently (every 2-4 hours) after starting fluids. A sudden increase in urine output is a red flag.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">5.2 Hypervolaemic Hyponatraemia</h3>
+                <p class="mb-2"><strong>Goal:</strong> Achieve a negative water balance and treat the underlying organ failure.</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>First-Line:</strong> Fluid restriction (&lt;1000 mL/day) and dietary salt restriction.</li>
+                    <li><strong>Second-Line:</strong> Loop diuretics (e.g., furosemide) to promote free water excretion.</li>
+                    <li><strong>Definitive:</strong> Optimise management of the underlying heart failure, cirrhosis, or renal disease.</li>
+                </ul>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">5.3 Euvolaemic Hyponatraemia (Primarily SIAD)</h3>
+                 <p class="mb-2"><strong>Goal:</strong> Counteract the inappropriate AVP action.</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>First-Line:</strong> Fluid restriction (&lt;1000 mL/day, sometimes as low as 500-750 mL).</li>
+                    <li><strong>Essential:</strong> Search for and treat the underlying cause (e.g., stop offending drug, treat infection).</li>
+                </ul>
+                <div class="alert alert-danger mt-4">
+                    <p><strong class="font-semibold">Critical Negative: DO NOT give 0.9% saline to a patient with SIAD.</strong> They cannot excrete the free water and will retain it, while excreting the sodium. This will paradoxically WORSEN the hyponatraemia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ODS -->
+        <section id="ods" class="space-y-6 mt-12">
+            <h2 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-200 pb-2">6. Osmotic Demyelination Syndrome (ODS)</h2>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                 <h3 class="text-2xl font-semibold mb-4">6.1 Pathophysiology</h3>
+                 <p>ODS is a devastating, iatrogenic complication of the rapid correction of <strong class="font-semibold">CHRONIC</strong> hyponatraemia. In chronic states, brain cells adapt by extruding organic solutes (osmolytes) to prevent swelling. If external sodium is then raised too quickly, the extracellular fluid becomes hypertonic relative to the osmolyte-depleted brain cells. This pulls water out of the cells, causing them to shrink, triggering inflammation and destruction of myelin sheaths, classically in the pons (Central Pontine Myelinolysis).</p>
+                 <div class="alert alert-info mt-4"><p>The risk of ODS in <strong class="font-semibold">ACUTE</strong> hyponatraemia is virtually non-existent, as cerebral adaptation has not occurred.</p></div>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">6.2 Identifying the High-Risk Patient</h3>
+                <p class="mb-4">Certain patients are exceptionally vulnerable. Adopt a more conservative approach from the outset in these groups.</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr><th>Risk Factor</th><th>Rationale</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Initial Serum Na+ ≤120 mmol/L</strong></td><td>More profound osmolyte depletion and larger required correction.</td></tr>
+                            <tr><td><strong>Alcohol Excess / Alcohol Use Disorder</strong></td><td>Depletion of the organic osmolytes needed for adaptation.</td></tr>
+                            <tr><td><strong>Malnutrition</strong></td><td>Depletion of substrates (amino acids, vitamins) required for the adaptive response.</td></tr>
+                            <tr><td><strong>Severe Liver Disease (Cirrhosis)</strong></td><td>Disruption of normal brain osmoregulation due to hyperammonaemia.</td></tr>
+                            <tr><td><strong>Hypokalaemia</strong></td><td>Potassium is an effective osmole; its deficiency impairs cell volume regulation.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                 <h3 class="text-2xl font-semibold mb-4">6.3 Prevention: The Safe Correction Corridor</h3>
+                 <div class="alert alert-danger text-center p-6">
+                    <h4 class="text-xl font-bold">UK & European Safety Limits</h4>
+                    <p class="text-2xl font-bold mt-2">Do NOT exceed <strong class="underline">10 mmol/L</strong> in the first 24 hours.</p>
+                    <p class="text-2xl font-bold mt-1">Do NOT exceed <strong class="underline">8 mmol/L</strong> in any subsequent 24 hours.</p>
+                 </div>
+                 <div class="alert alert-warning mt-6">
+                    <h4 class="font-semibold">High-Risk Patients:</h4>
+                    <p>For patients with risk factors for ODS, proactively aim for a more conservative target of <strong class="font-semibold">&lt;8 mmol/L in the first 24 hours</strong>.</p>
+                 </div>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4">6.4 Managing Over-Correction</h3>
+                <p>Exceeding safe correction limits is a medical emergency requiring immediate, active intervention.</p>
+                <ul class="list-decimal list-inside space-y-2 mt-4">
+                    <li><strong class="font-semibold">Recognise Early:</strong> A sudden increase in urine output (&gt;100-200 mL/hour) often heralds rapid over-correction.</li>
+                    <li><strong class="font-semibold">Stop the Correcting Agent:</strong> Immediately discontinue any 0.9% or hypertonic saline.</li>
+                    <li><strong class="font-semibold">Contact a Specialist:</strong> Urgent discussion with Endocrinology or ITU is mandatory.</li>
+                    <li><strong class="font-semibold">Actively Re-lower Serum Sodium:</strong> Administer hypotonic fluid (IV 5% Dextrose or oral/NG free water).</li>
+                    <li><strong class="font-semibold">Consider Desmopressin (DDAVP):</strong> This synthetic AVP acts as a pharmacological "brake" on the kidneys, halting free water excretion and allowing for a controlled re-lowering of the sodium.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Disposition -->
+        <section id="disposition" class="space-y-6 mt-12">
+            <h2 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-200 pb-2">7. Disposition & Specialty Liaison</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">7.1 Admission Criteria</h3>
+                    <p>Admit the majority of patients with significant hyponatraemia. Specific criteria include:</p>
+                    <ul class="list-disc list-inside mt-4 space-y-2">
+                        <li>Any symptoms attributable to hyponatraemia.</li>
+                        <li>Biochemically severe hyponatraemia (Na+ &lt;125 mmol/L).</li>
+                        <li>Hypovolaemia requiring IV fluid resuscitation.</li>
+                        <li>Acute onset hyponatraemia.</li>
+                        <li>A new underlying diagnosis requiring admission.</li>
+                        <li>Any diagnostic uncertainty.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">7.2 Critical Care (ICU/HDU) Referral</h3>
+                    <p>Immediate referral to critical care is required for:</p>
+                     <ul class="list-disc list-inside mt-4 space-y-2">
+                        <li>Severe neurological symptoms (Seizures, GCS ≤8).</li>
+                        <li>Any patient requiring treatment with IV hypertonic saline.</li>
+                        <li>Haemodynamic instability.</li>
+                        <li>Patients who have over-corrected and require active management.</li>
+                        <li>Patients at extremely high risk of ODS requiring very frequent monitoring.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="scrollToTopBtn" class="p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+    
+    <footer class="bg-white mt-12 py-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            <p>This guide is for educational purposes and should be used in conjunction with local trust guidelines and senior clinical advice.</p>
+            <p>&copy; 2025 WMEBEM Educational Resources</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const calculateBtn = document.getElementById('calculateNa');
+
+            // --- Navigation Highlighting ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '-25% 0px -75% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Set initial active link
+            if (window.location.hash) {
+                 navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === window.location.hash));
+            } else {
+                 navLinks[0].classList.add('active');
+            }
+
+
+            // --- Scroll to Top Button ---
+            window.onscroll = function() {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            };
+
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+
+            // --- Sodium Correction Calculator ---
+            calculateBtn.addEventListener('click', function() {
+                const measuredNa = parseFloat(document.getElementById('measuredNa').value);
+                const glucose = parseFloat(document.getElementById('glucose').value);
+                const resultDiv = document.getElementById('correctedNaResult');
+
+                if (isNaN(measuredNa) || isNaN(glucose)) {
+                    resultDiv.textContent = 'Please enter valid numbers.';
+                    resultDiv.classList.add('text-red-500');
+                    return;
+                }
+                
+                // Using the common correction factor of adding 2.4 mmol/L to Na+ for every 5.5 mmol/L glucose is above 5.5
+                let correctedNa;
+                if (glucose <= 5.5) {
+                    correctedNa = measuredNa;
+                } else {
+                    const glucoseExcess = glucose - 5.5;
+                    const correctionFactor = 2.4;
+                    const naCorrection = (glucoseExcess / 5.5) * correctionFactor;
+                    correctedNa = measuredNa + naCorrection;
+                }
+                
+                resultDiv.textContent = `Corrected Sodium: ${correctedNa.toFixed(1)} mmol/L`;
+                resultDiv.classList.remove('text-red-500');
+            });
+        });
+    </script>
+
+</body>
+</html>
+
